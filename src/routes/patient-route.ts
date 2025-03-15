@@ -12,7 +12,7 @@ router.post('/add',async(req,res)=>{
         const adding_patient = await PatientAdd(new_patient);
         res.json(adding_patient);
     }catch (error) {
-        console.log('error adding class',error);
+        console.log('error adding patient',error);
     }
 })
 
