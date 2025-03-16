@@ -1,5 +1,7 @@
 import Doctor from "../model/Doctor";
 import DoctorModel from "../model/doctor-model";
+import Patient from "../model/Patient";
+import PatientModel from "../model/patient-model";
 
 export async function DoctorAdd(d:Doctor) {
     console.log("Received Data:", d); // Log received data
@@ -16,5 +18,12 @@ export async function DoctorAdd(d:Doctor) {
         return newDoctor;
     } catch (err) {
         console.log("Error Adding Doctor:", err);
+    }
+}
+export async function getAllDoctors(doctor:Doctor) {
+    try {
+        return DoctorModel.find()
+    } catch (err) {
+        console.log("error getting doctors from prisma data", err)
     }
 }
