@@ -17,3 +17,10 @@ export async function PatientAdd(p:Patient) {
         console.log("Error Adding Patient:", err);
     }
 }
+export async function getAllPatients(patients:Patient) {
+    try {
+        return PatientModel.find()
+    } catch (err) {
+        console.log("error getting patients from prisma data", err)
+    }
+}

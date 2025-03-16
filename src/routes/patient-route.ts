@@ -1,5 +1,5 @@
 import express from "express";
-import {PatientAdd} from "../database/mongo-patient-data-store";
+import {getAllPatients, PatientAdd} from "../database/mongo-patient-data-store";
 
 
 
@@ -16,7 +16,14 @@ router.post('/add',async(req,res)=>{
     }
 })
 
-
-
+router.get('/view',async (req,res)=>{
+    const all_patients = req.body;
+    try{
+        const loadAllPatients = await getAllPatients(all_patients);
+        res.json(loadAllPatients);
+    }catch (error){
+        console.log('error fetching data',error);
+    }
+})
 
 export  default router;
