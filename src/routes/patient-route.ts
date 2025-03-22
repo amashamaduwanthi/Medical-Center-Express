@@ -1,5 +1,5 @@
 import express from "express";
-import {getAllPatients, PatientAdd} from "../database/mongo-patient-data-store";
+import {deletePatient, getAllPatients, PatientAdd} from "../database/mongo-patient-data-store";
 
 
 
@@ -23,6 +23,16 @@ router.get('/view',async (req,res)=>{
         res.json(loadAllPatients);
     }catch (error){
         console.log('error fetching data',error);
+    }
+})
+
+router.delete('/delete/:email',async (req,res)=>{
+    const email=req.params.email;
+    try {
+        const delete_patient= await deletePatient(email);
+        res.json(delete_patient);
+    }catch (err){
+        console.log(err)
     }
 })
 

@@ -8,6 +8,7 @@ export async function PatientAdd(p:Patient) {
         const newPatient = await PatientModel.create({
             name:p.name,
             age:p.age,
+            email:p.email,
             condition:p.condition
 
         });
@@ -22,5 +23,16 @@ export async function getAllPatients(patients:Patient) {
         return PatientModel.find()
     } catch (err) {
         console.log("error getting patients from prisma data", err)
+    }
+}
+export async function deletePatient(email:string){
+    try {
+        await PatientModel.deleteOne({
+            email:email
+        })
+        console.log("Patient deleted email :", email)
+        return email;
+    }catch (err){
+        console.log("Error deleting Patient",err)
     }
 }
