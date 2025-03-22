@@ -1,7 +1,6 @@
 import Doctor from "../model/Doctor";
 import DoctorModel from "../model/doctor-model";
-import Patient from "../model/Patient";
-import PatientModel from "../model/patient-model";
+
 
 export async function DoctorAdd(d:Doctor) {
     console.log("Received Data:", d); // Log received data
@@ -25,5 +24,16 @@ export async function getAllDoctors(doctor:Doctor) {
         return DoctorModel.find()
     } catch (err) {
         console.log("error getting doctors from prisma data", err)
+    }
+}
+export async function deleteDoctor(name:string){
+    try {
+        await DoctorModel.deleteOne({
+            name:name
+        })
+        console.log("Doctor deleted name :", name)
+        return name;
+    }catch (err){
+        console.log("Error deleting Doctor",err)
     }
 }
