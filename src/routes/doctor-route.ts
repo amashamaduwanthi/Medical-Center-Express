@@ -1,10 +1,5 @@
 import express from "express";
 import {deleteDoctor, DoctorAdd, getAllDoctors} from "../database/mongo-doctor-data-store";
-import {deletePatient} from "../database/mongo-patient-data-store";
-
-
-
-
 const router = express.Router();
 
 router.post('/add',async(req,res)=>{
@@ -18,8 +13,6 @@ router.post('/add',async(req,res)=>{
 
     }
 })
-
-
 router.get('/view',async (req,res)=>{
     const doctors=req.body;
     try {

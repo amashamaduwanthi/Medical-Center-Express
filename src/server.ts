@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import patientRoute from "./routes/patient-route";
 import doctorRoute from "./routes/doctor-route";
+import appoinmentRoutes from "./routes/appoinment-routes";
 
 
 
@@ -25,7 +26,8 @@ app.use('/',(req,res,next)=>{
 
 
 app.use('/patient', patientRoute);
-app.use('/doctor',doctorRoute)
+app.use('/doctor',doctorRoute);
+app.use('/appointment',appoinmentRoutes);
 
 
 app.use('*', (req, res) => {
