@@ -18,3 +18,12 @@ export async function AppointmentAdd(a:Appointment){
     }
 
 }
+
+export async function getAllAppointments(a:Appointment){
+
+    try {
+        return AppointmentModel.find();
+    }catch (error) {
+        console.log('error fetching appointment data',error);
+    }
+}
