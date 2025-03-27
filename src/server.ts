@@ -7,6 +7,7 @@ import userRoutes from "./routes/user-routes";
 import dotenv from "dotenv";
 
 import cors from 'cors';
+import paymentRoutes from "./routes/payment-routes";
 const app = express();
 dotenv.config();
 
@@ -29,7 +30,8 @@ app.use(cors({
 app.use('/patient', patientRoute);
 app.use('/doctor',doctorRoute);
 app.use('/appointment',appoinmentRoutes);
-app.use('/user',userRoutes)
+app.use('/user',userRoutes);
+app.use('/payment',paymentRoutes)
 
 
 app.use('*', (req, res) => {
